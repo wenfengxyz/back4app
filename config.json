@@ -1,30 +1,12 @@
 {
-  "inbounds": [
-    // 健康检查用 HTTP 服务（8080 端口）
-    {
-      "type": "http",
-      "listen": "::",
-      "port": 8080
-    },
-    // 你的代理服务（示例为 vless，可替换）
-    {
-      "type": "vless",
-      "listen": "::",
-      "port": 8081,
-      "protocol": "tcp",
-      "settings": {
-        "decryption": "none",
-        "clients": [
-          {
-            "uuid": "0dc86002-3d43-4d83-ba4e-198bb11b82d2"
-          }
-        ]
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "direct"
-    }
-  ]
+  "log": { "level": "info" },
+  "inbounds": [{
+    "type": "vless",
+    "tag": "vless-in",
+    "listen": "::",
+    "listen_port": 8080,
+    "users": [{ "uuid": "0dc86002-3d43-4d83-ba4e-198bb11b82d2" }],
+    "transport": { "type": "ws", "path": "/chat" }
+  }],
+  "outbounds": [{ "type": "direct", "tag": "direct" }]
 }
