@@ -1,13 +1,12 @@
 {
   "inbounds": [
-    // 给 Back4App 用的 HTTP 健康检查端口
+    // 健康检查用 HTTP 端口（8080）
     {
       "type": "http",
       "listen": "::",
-      "port": 8080,
-      "users": []
+      "port": 8080
     },
-    // 你的代理服务（示例用 vless，按需修改）
+    // 你的代理服务（示例 vless，可替换成其他协议）
     {
       "type": "vless",
       "listen": "::",
